@@ -1,0 +1,2 @@
+"""CodeMate API package."""
+

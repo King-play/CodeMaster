@@ -1,0 +1,25 @@
+{
+  "name": "codemate",
+  "version": "0.1.0",
+  "private": false,
+  "description": "AI-assisted code review and test case generation system.",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "python -m uvicorn app.main:app --reload --app-dir backend --host 0.0.0.0 --port 8000",
+    "dev:web": "npm --prefix frontend run dev -- --host 0.0.0.0",
+    "install:all": "python -m pip install -r backend/requirements.txt && npm --prefix frontend install",
+    "test": "pytest backend/tests",
+    "lint:web": "npm --prefix frontend run lint",
+    "build:web": "npm --prefix frontend run build",
+    "db:upgrade": "python -m alembic upgrade head",
+    "db:stamp": "python -m alembic stamp head",
+    "db:revision": "python -m alembic revision --autogenerate"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  },
+  "engines": {
+    "node": ">=20",
+    "npm": ">=10"
+  }
+}

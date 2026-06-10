@@ -1,0 +1,12 @@
+services:
+  codemate:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:///./data/codemate.db
+      CODEMATE_DEMO_MODE: "true"
+      FRONTEND_ORIGIN: http://localhost:8000
+    volumes:
+      - ./data:/app/data
+
